@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import wa1 from "../assets/Frame 2147225395 (1).png";
 import wa2 from "../assets/wallet_5_fill.png";
-import lo2 from "../assets/alarm_2_fill.png";
+// import lo2 from "../assets/alarm_2_fill.png";
+import stroke from "../assets/Rectangle 12.png";
 import { Link } from "react-router-dom";
 const WalletPage = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -110,8 +111,8 @@ const WalletPage = () => {
       <div>
         <div className="max-w-5xl mx-auto flex justify-end pt-5 pb-2 px-5 md:px-8">
           <div className="flex items-center gap-5 bg-white rounded-full px-5 py-2.5 shadow-sm">
-            <Link to="/profile">
-              <img src={wa1} alt="Profile" className="w-5 h-5 object-contain" />
+            <Link to="/home">
+              <img src={wa1} alt="home" className="w-5 h-5 object-contain" />
             </Link>
             <Link to="/wallet">
               <img src={wa2} alt="Wallet" className="w-5 h-5 object-contain" />
@@ -125,7 +126,11 @@ const WalletPage = () => {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
               </svg>
             </Link>
           </div>
@@ -175,78 +180,39 @@ const WalletPage = () => {
 
         {/* Wallet card */}
         <div
-          className="rounded-3xl p-5 mb-8 relative overflow-hidden"
+          className="rounded-3xl p-4 sm:p-5 mb-8 relative overflow-hidden"
           style={{
             background: "#E8960C",
-            minHeight: 220,
           }}
         >
           {/* Keith Haring-style art pattern */}
           <div
-            className="absolute top-4 left-1/2 -translate-x-1/2 rounded-2xl overflow-hidden"
+            className="mx-auto rounded-2xl overflow-hidden"
             style={{
-              width: "85%",
-              height: 130,
               background: "#1A1A1A",
+              aspectRatio: "2.2 / 1",
             }}
           >
-            {/* Abstract pattern overlay */}
-            <svg
-              viewBox="0 0 400 200"
-              className="w-full h-full"
-              style={{ opacity: 0.6 }}
-            >
-              {/* Haring-inspired figures */}
-              <g stroke="#E8960C" strokeWidth="3" fill="none">
-                {/* Figure 1 */}
-                <path d="M40 140 Q50 80 80 100 Q110 120 100 60" />
-                <circle cx="100" cy="50" r="12" />
-                <path d="M70 110 L50 130 M90 90 L120 80" />
-
-                {/* Figure 2 */}
-                <path d="M150 150 Q160 90 190 110 Q210 130 200 70" />
-                <circle cx="200" cy="58" r="12" />
-                <path d="M170 120 L145 140 M195 95 L225 85" />
-
-                {/* Figure 3 - crawling */}
-                <path d="M250 130 Q280 100 310 120 Q340 140 350 100" />
-                <circle cx="260" cy="115" r="12" />
-                <path d="M290 108 L280 80 M320 125 L340 150" />
-
-                {/* X mark */}
-                <circle cx="60" cy="60" r="18" strokeWidth="3" fill="none" />
-                <path d="M50 50 L70 70 M70 50 L50 70" strokeWidth="3" />
-
-                {/* Radiating lines */}
-                <path d="M150 50 L155 35 M160 48 L170 35 M145 55 L130 45" />
-                <path d="M300 70 L310 55 M295 65 L285 50 M305 75 L320 65" />
-
-                {/* Additional squiggles */}
-                <path d="M30 40 Q45 20 60 35" />
-                <path d="M330 50 Q350 30 370 45" />
-                <path d="M180 160 Q200 145 220 160" />
-              </g>
-            </svg>
+            <img src={stroke} alt="" className="w-full h-full object-cover" />
           </div>
 
           {/* Balance info */}
-          <div className="relative" style={{ marginTop: 145 }}>
-            <p className="text-sm mb-1" style={{ color: "#FFF8E8" }}>
+          <div className="mt-4 sm:mt-5">
+            <p className="text-xs sm:text-sm mb-1" style={{ color: "#FFF8E8" }}>
               Available balance
             </p>
             <div className="flex items-center justify-between">
               <h2
-                className="text-3xl font-black"
+                className="text-2xl sm:text-3xl font-black"
                 style={{ color: "white", fontFamily: "'Georgia', serif" }}
               >
                 $GLM {balance}
               </h2>
               <button
-                className="px-6 py-2.5 rounded-full text-sm font-bold"
+                className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm font-bold"
                 style={{
-                  background: "white",
+                  background: "#FDE9C4",
                   color: "#2D2A26",
-                  boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
                 }}
               >
                 Send
@@ -295,7 +261,7 @@ const WalletPage = () => {
           </div>
         ) : (
           /* ========== TRANSACTION LIST (Image 2) ========== */
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 bg-[#FEF6E7]">
             {transactions.map((tx, index) => (
               <div
                 key={tx.id}

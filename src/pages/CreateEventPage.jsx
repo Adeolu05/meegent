@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import wa1 from "../assets/Frame 2147225395 (1).png";
 import wa2 from "../assets/wallet_5_fill.png";
-import lo2 from "../assets/alarm_2_fill.png";
+import lo2 from "../assets/link_2_line.png";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 const CreateEventPage = ({ navigate, goBack }) => {
@@ -60,7 +60,11 @@ const CreateEventPage = ({ navigate, goBack }) => {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
               </svg>
             </Link>
           </div>
@@ -91,7 +95,7 @@ const CreateEventPage = ({ navigate, goBack }) => {
           {/* Image placeholder */}
           <div className="px-5 md:px-8 pt-3 pb-4">
             <div
-              className="rounded-2xl flex items-center justify-center relative h-[180px] md:h-[240px]"
+              className="rounded-2xl flex items-center justify-center relative h-[150px] sm:h-[180px] md:h-[240px]"
               style={{
                 background: "linear-gradient(135deg, #F5E6B8 0%, #E8D48B 100%)",
               }}
@@ -110,29 +114,33 @@ const CreateEventPage = ({ navigate, goBack }) => {
           {/* Event Name */}
           <div className="px-5 md:px-8 pb-3">
             <div className="flex items-center gap-2">
-              <input
-                type="text"
-                placeholder="Event Name"
-                value={eventName}
-                onChange={(e) => setEventName(e.target.value)}
-                className="text-2xl md:text-3xl font-bold flex-1 bg-transparent outline-none"
-                style={{
-                  color: "#2D2A26",
-                  fontFamily: "'Georgia', serif",
-                  caretColor: "#E8960C",
-                }}
-              />
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="#E8960C"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-              </svg>
+              <div className="flex items-center flex-1 min-w-0 gap-2">
+                <input
+                  type="text"
+                  placeholder="Event Name"
+                  value={eventName}
+                  onChange={(e) => setEventName(e.target.value)}
+                  className="text-xl sm:text-2xl md:text-3xl font-bold flex-1 min-w-0 bg-transparent outline-none"
+                  style={{
+                    color: "#2D2A26",
+                    fontFamily: "'Georgia', serif",
+                    caretColor: "#E8960C",
+                  }}
+                />
+                <svg
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="#E8960C"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  className="flex-shrink-0"
+                >
+                  <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                  <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                </svg>
+              </div>
+              <img src={lo2} alt="" className="w-5 h-5 flex-shrink-0" />
             </div>
           </div>
 
@@ -471,7 +479,7 @@ const CreateEventPage = ({ navigate, goBack }) => {
           className="w-full py-4 md:py-5 rounded-full text-base md:text-lg font-bold cursor-pointer"
           style={{
             background: "#E8960C",
-            color: "#2D2A26",
+            color: "#F4F4F4",
             boxShadow: "0 4px 20px rgba(232, 150, 12, 0.4)",
           }}
           onClick={handleCreate}

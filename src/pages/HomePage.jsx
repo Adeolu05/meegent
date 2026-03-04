@@ -42,12 +42,13 @@ const HomePage = ({ navigate }) => {
       perPerson: true,
       ev: ev,
       isVirtual: false,
-      about: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      about:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       organizer: {
         name: "Sonic Managemnet",
-        role: "Organize Team"
+        role: "Organize Team",
       },
-      attendees: 8000
+      attendees: 8000,
     },
     {
       id: 2,
@@ -60,12 +61,13 @@ const HomePage = ({ navigate }) => {
       ev: ev,
       isVirtual: true,
       virtualLink: "http://meet.google.c",
-      about: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      about:
+        "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       organizer: {
         name: "Sonic Managemnet",
-        role: "Organize Team"
+        role: "Organize Team",
       },
-      attendees: 5000
+      attendees: 5000,
     },
   ];
   const events2 = [
@@ -86,9 +88,9 @@ const HomePage = ({ navigate }) => {
   };
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col border-20 border-[#FFFFFF]"
       style={{
-        background: "#FAF6EF",
+        background: "#FEF6E766",
         transition: "opacity 0.5s ease",
         opacity: fadeIn ? 1 : 0,
       }}
@@ -96,7 +98,7 @@ const HomePage = ({ navigate }) => {
       {/* Top bar with icons */}
       {/* Top bar */}
       <div>
-        <div className="max-w-5xl mx-auto flex justify-center md:justify-end gap-3 pt-3 pb-2 px-5 md:px-8">
+        <div className="max-w-5xl mx-auto flex justify-end gap-3 pt-3 pb-2 px-5 md:px-8">
           <Link to="/home">
             <div className="w-9 h-9 rounded-lg flex items-center justify-center">
               <img src={wa1} />
@@ -117,7 +119,11 @@ const HomePage = ({ navigate }) => {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
               </svg>
             </div>
           </Link>
@@ -134,34 +140,36 @@ const HomePage = ({ navigate }) => {
               alt=""
               className="w-11 h-11 md:w-13 md:h-13 rounded-full flex-shrink-0"
             />
-            <button className="flex items-center gap-2" onClick={handleCopy}>
-              
-              <span
-                className="text-sm px-3 py-1 rounded-full"
-                style={{ background: "#F0EBE3", color: "#8B8068" }}
-              >
-                0x87... 6569hb
-              </span>
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="#8B8068"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <rect x="9" y="9" width="13" height="13" rx="2" />
-                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-              </svg>
-              {copied && (
+            <div>
+              <p className="text-sm sm:text-base font-medium" style={{ color: "#2D2A26" }}>Hey, Rebacca</p>
+              <button className="flex items-center gap-1.5 sm:gap-2" onClick={handleCopy}>
                 <span
-                  className="text-xs font-medium animate-pulse"
-                  style={{ color: "#E8960C" }}
+                  className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full truncate"
+                  style={{ background: "#F0EBE3", color: "#8B8068" }}
                 >
-                  Copied!
+                  0x87... 6569hb
                 </span>
-              )}
-            </button>
+                <svg
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="#8B8068"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                </svg>
+                {copied && (
+                  <span
+                    className="text-xs font-medium animate-pulse"
+                    style={{ color: "#E8960C" }}
+                  >
+                    Copied!
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
           <div className="flex gap-2">
             {/* ADD BUTTON - navigates to Create Event */}
@@ -174,7 +182,7 @@ const HomePage = ({ navigate }) => {
             </button>
             <div
               className="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center"
-            // style={{ border: "1.5px solid #E8960C" }}
+              // style={{ border: "1.5px solid #E8960C" }}
             >
               <img src={wa5} alt="" />
             </div>
@@ -251,11 +259,11 @@ const HomePage = ({ navigate }) => {
           </div>
 
           {/* Event cards: horizontal scroll on mobile, grid on desktop */}
-          <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:snap-none scrollbar-hide">
             {events.map((event) => (
               <div
                 key={event.id}
-                className="rounded-2xl overflow-hidden flex-shrink-0 md:flex-shrink w-[280px] sm:w-[320px] md:w-auto cursor-pointer"
+                className="rounded-2xl overflow-hidden flex-shrink-0 md:flex-shrink w-[75vw] sm:w-[320px] md:w-auto cursor-pointer snap-start"
                 style={{
                   background: "#FEF6E7",
                   boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
@@ -263,7 +271,7 @@ const HomePage = ({ navigate }) => {
                 onClick={() => setSelectedEvent(event)}
               >
                 {/* Event image */}
-                <div className="relative h-[220px] md:h-[240px] w-full">
+                <div className="relative h-[180px] sm:h-[220px] md:h-[240px] w-full">
                   <img
                     src={event.ev}
                     alt=""
@@ -272,10 +280,13 @@ const HomePage = ({ navigate }) => {
                   <div className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
                     <img src={fra} className="w-4 h-4" />
                   </div>
-                  <div
-                    className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm"
-                  >
-                    <svg width="16" height="16" fill="#F3A218" viewBox="0 0 24 24">
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="#F3A218"
+                      viewBox="0 0 24 24"
+                    >
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                   </div>
@@ -323,16 +334,43 @@ const HomePage = ({ navigate }) => {
                       </span>
                     </span>
                     <div className="flex -space-x-[10px] items-center">
-                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[1]"><img src={memoji1} className="w-full h-full object-cover" /></div>
-                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[2]"><img src={memoji2} className="w-full h-full object-cover" /></div>
-                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[3]"><img src={memoji3} className="w-full h-full object-cover" /></div>
-                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[4]"><img src={memoji4} className="w-full h-full object-cover" /></div>
-                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[5]"><img src={memoji5} className="w-full h-full object-cover" /></div>
+                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[1]">
+                        <img
+                          src={memoji1}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[2]">
+                        <img
+                          src={memoji2}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[3]">
+                        <img
+                          src={memoji3}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[4]">
+                        <img
+                          src={memoji4}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="w-[20px] h-[20px] rounded-full overflow-hidden border-[1.5px] border-[#FFF9EF] bg-[#FDE4B4] shadow-sm relative z-[5]">
+                        <img
+                          src={memoji5}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <div
                         className="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#FFF9EF] shadow-sm relative z-[6] flex items-center justify-center -ml-1"
                         style={{ background: "#F3A218" }}
                       >
-                        <span className="text-[7px] font-bold text-white">+34</span>
+                        <span className="text-[7px] font-bold text-white">
+                          +34
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -360,14 +398,14 @@ const HomePage = ({ navigate }) => {
             </Link>
           </div>
           <div
-            className="p-3 md:p-4"
+            className="p-3 md:p-4 rounded-2xl"
             style={{
               background: "white",
               boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
             }}
           >
             <div className="flex items-center gap-3 rounded-2xl ">
-              <img src={im} alt="" />
+              <img src={im} alt="" className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl object-cover flex-shrink-0" />
               <div className="flex-1">
                 <p
                   className="text-sm md:text-base font-bold in "
@@ -378,14 +416,14 @@ const HomePage = ({ navigate }) => {
                 <div className="flex items-center gap-2">
                   <img src={lo} alt="" />
                   <span
-                    className="text-xs md:text-sm"
+                    className="text-[10px] sm:text-xs md:text-sm"
                     style={{ color: "#8B8068" }}
                   >
                     Bangkok
                   </span>
                   <img src={lo2} alt="" />
                   <span
-                    className="text-xs md:text-sm"
+                    className="text-[10px] sm:text-xs md:text-sm"
                     style={{ color: "#8B8068" }}
                   >
                     May 29 - 10:00 AM
@@ -425,11 +463,21 @@ const HomePage = ({ navigate }) => {
                   </span>
                 </div>
                 <div className="flex -space-x-[8px] items-center">
-                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[1]"><img src={memoji1} className="w-full h-full object-cover" /></div>
-                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[2]"><img src={memoji2} className="w-full h-full object-cover" /></div>
-                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[3]"><img src={memoji3} className="w-full h-full object-cover" /></div>
-                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[4]"><img src={memoji4} className="w-full h-full object-cover" /></div>
-                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[5]"><img src={memoji5} className="w-full h-full object-cover" /></div>
+                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[1]">
+                    <img src={memoji1} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[2]">
+                    <img src={memoji2} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[3]">
+                    <img src={memoji3} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[4]">
+                    <img src={memoji4} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-[24px] h-[24px] rounded-full overflow-hidden border-[2px] border-white bg-[#FDE4B4] shadow-sm relative z-[5]">
+                    <img src={memoji5} className="w-full h-full object-cover" />
+                  </div>
                   <div
                     className="w-[24px] h-[24px] rounded-full border-[2px] border-white shadow-sm relative z-[6] flex items-center justify-center -ml-[6px]"
                     style={{ background: "#F3A218" }}
@@ -446,7 +494,7 @@ const HomePage = ({ navigate }) => {
       {/* Event Modal / Bottom Sheet */}
       {selectedEvent && (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center"
+          className="fixed inset-0 z-50 flex items-end md:items-center justify-center px-0 md:px-4"
           style={{
             background: "rgba(0,0,0,0.6)",
           }}
@@ -456,24 +504,30 @@ const HomePage = ({ navigate }) => {
           }}
         >
           <div
-            className="rounded-t-[32px] overflow-hidden w-full max-w-full relative flex flex-col"
+            className="rounded-t-[32px] md:rounded-[32px] overflow-hidden w-full md:max-w-lg md:mb-auto md:mt-auto relative flex flex-col"
             style={{
               background: "#FFFBF4",
               boxShadow: "0 -8px 40px rgba(0,0,0,0.15)",
-              maxHeight: "90vh"
+              maxHeight: "90vh",
             }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Minimal top border/handle piece */}
             <div className="flex justify-center pt-3 pb-1">
-              <div className="w-12 h-1.5 rounded-full" style={{ background: "#F5DEC0" }} />
+              <div
+                className="w-12 h-1.5 rounded-full"
+                style={{ background: "#F5DEC0" }}
+              />
             </div>
 
             {modalView === "main" && (
               <div className="px-5 pb-6 overflow-y-auto">
                 {/* Header */}
                 <div className="flex justify-between items-start pt-2">
-                  <h3 className="text-xl font-bold leading-tight" style={{ color: "#111827", maxWidth: "80%" }}>
+                  <h3
+                    className="text-xl font-bold leading-tight"
+                    style={{ color: "#111827", maxWidth: "80%" }}
+                  >
                     {selectedEvent.title}
                   </h3>
                   <button className="text-[#F3A218] p-1">
@@ -485,13 +539,19 @@ const HomePage = ({ navigate }) => {
                 <div className="flex items-center gap-4 mt-3 mb-4">
                   <div className="flex items-center gap-1.5">
                     <img src={lo} className="w-4 h-4" alt="" />
-                    <span className="text-xs font-medium" style={{ color: "#4B5563" }}>
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "#4B5563" }}
+                    >
                       {selectedEvent.location}
                     </span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <img src={lo2} className="w-4 h-4" alt="" />
-                    <span className="text-xs font-medium" style={{ color: "#4B5563" }}>
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "#4B5563" }}
+                    >
                       {selectedEvent.date}
                     </span>
                   </div>
@@ -500,51 +560,116 @@ const HomePage = ({ navigate }) => {
                 {/* Attendees */}
                 <div className="flex items-center gap-3 mb-5">
                   <div className="flex -space-x-[10px]">
-                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[1]"><img src={memoji1} className="w-full h-full object-cover" /></div>
-                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[2]"><img src={memoji2} className="w-full h-full object-cover" /></div>
-                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[3]"><img src={memoji3} className="w-full h-full object-cover" /></div>
-                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[4]"><img src={memoji4} className="w-full h-full object-cover" /></div>
-                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[5]"><img src={memoji5} className="w-full h-full object-cover" /></div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[1]">
+                      <img
+                        src={memoji1}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[2]">
+                      <img
+                        src={memoji2}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[3]">
+                      <img
+                        src={memoji3}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[4]">
+                      <img
+                        src={memoji4}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[5]">
+                      <img
+                        src={memoji5}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div
                       className="w-[32px] h-[32px] rounded-full border-[2px] border-[#FFFBF4] shadow-sm relative z-[6] flex items-center justify-center -ml-2"
                       style={{ background: "#F3A218" }}
                     >
-                      <span className="text-[11px] font-bold text-white">+34</span>
+                      <span className="text-[11px] font-bold text-white">
+                        +34
+                      </span>
                     </div>
                   </div>
                   <div className="text-xs font-semibold">
-                    {selectedEvent.attendees}+ <span style={{ color: "#F3A218", fontWeight: "normal" }}>/Invites</span>
+                    {selectedEvent.attendees}+{" "}
+                    <span style={{ color: "#F3A218", fontWeight: "normal" }}>
+                      /Invites
+                    </span>
                   </div>
                 </div>
 
                 {/* About Event */}
                 <div className="mb-5">
-                  <h4 className="text-sm font-bold mb-2" style={{ color: "#111827" }}>About Event</h4>
-                  <p className="text-[13px] leading-relaxed" style={{ color: "#374151" }}>
+                  <h4
+                    className="text-sm font-bold mb-2"
+                    style={{ color: "#111827" }}
+                  >
+                    About Event
+                  </h4>
+                  <p
+                    className="text-[13px] leading-relaxed"
+                    style={{ color: "#374151" }}
+                  >
                     {selectedEvent.about.substring(0, 180)}...{" "}
-                    <button onClick={() => setModalView("readMore")} style={{ color: "#F3A218" }}>Read more</button>
+                    <button
+                      onClick={() => setModalView("readMore")}
+                      style={{ color: "#F3A218" }}
+                    >
+                      Read more
+                    </button>
                   </p>
                 </div>
 
                 {/* Organizer */}
                 <div className="mb-5">
-                  <h4 className="text-sm font-bold mb-3" style={{ color: "#111827" }}>Organizer</h4>
+                  <h4
+                    className="text-sm font-bold mb-3"
+                    style={{ color: "#111827" }}
+                  >
+                    Organizer
+                  </h4>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-900 border border-gray-100">
                         {/* Mock organizer image */}
-                        <img src={im} alt="Organizer" className="w-full h-full object-cover" />
+                        <img
+                          src={im}
+                          alt="Organizer"
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div>
-                        <p className="text-sm font-bold" style={{ color: "#111827" }}>{selectedEvent.organizer?.name}</p>
-                        <p className="text-[11px]" style={{ color: "#6B7280" }}>{selectedEvent.organizer?.role}</p>
+                        <p
+                          className="text-sm font-bold"
+                          style={{ color: "#111827" }}
+                        >
+                          {selectedEvent.organizer?.name}
+                        </p>
+                        <p className="text-[11px]" style={{ color: "#6B7280" }}>
+                          {selectedEvent.organizer?.role}
+                        </p>
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <button className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "#FFF0D6", color: "#F3A218" }}>
+                      <button
+                        className="w-9 h-9 rounded-full flex items-center justify-center"
+                        style={{ background: "#FFF0D6", color: "#F3A218" }}
+                      >
                         <FiPhone size={16} />
                       </button>
-                      <button className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "#FFF0D6", color: "#F3A218" }}>
+                      <button
+                        className="w-9 h-9 rounded-full flex items-center justify-center"
+                        style={{ background: "#FFF0D6", color: "#F3A218" }}
+                      >
                         <FiMessageSquare size={16} />
                       </button>
                     </div>
@@ -554,12 +679,23 @@ const HomePage = ({ navigate }) => {
                 {/* Address block */}
                 <div className="mb-6 flex items-end justify-between">
                   <div>
-                    <h4 className="text-sm font-bold mb-1" style={{ color: "#111827" }}>Address</h4>
+                    <h4
+                      className="text-sm font-bold mb-1"
+                      style={{ color: "#111827" }}
+                    >
+                      Address
+                    </h4>
                     <p className="text-[13px]" style={{ color: "#6B7280" }}>
-                      {selectedEvent.isVirtual ? selectedEvent.virtualLink : "Saint Ives ,New York, USA"}
+                      {selectedEvent.isVirtual
+                        ? selectedEvent.virtualLink
+                        : "Saint Ives ,New York, USA"}
                     </p>
                   </div>
-                  <button onClick={() => setModalView("map")} className="text-sm font-bold mb-0.5" style={{ color: "#F3A218" }}>
+                  <button
+                    onClick={() => setModalView("map")}
+                    className="text-sm font-bold mb-0.5"
+                    style={{ color: "#F3A218" }}
+                  >
                     View map
                   </button>
                 </div>
@@ -567,9 +703,17 @@ const HomePage = ({ navigate }) => {
                 {/* Footer price / counter */}
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <p className="text-xs mb-1" style={{ color: "#6B7280" }}>Total Price</p>
-                    <p className="font-bold text-sm" style={{ color: "#F3A218" }}>
-                      200 $GLM <span className="text-[10px] font-normal text-gray-400">/Person</span>
+                    <p className="text-xs mb-1" style={{ color: "#6B7280" }}>
+                      Total Price
+                    </p>
+                    <p
+                      className="font-bold text-sm"
+                      style={{ color: "#F3A218" }}
+                    >
+                      200 $GLM{" "}
+                      <span className="text-[10px] font-normal text-gray-400">
+                        /Person
+                      </span>
                     </p>
                   </div>
 
@@ -581,7 +725,10 @@ const HomePage = ({ navigate }) => {
                     >
                       -
                     </button>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-medium" style={{ background: "#F3A218" }}>
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-medium"
+                      style={{ background: "#F3A218" }}
+                    >
                       {quantity}
                     </div>
                     <button
@@ -595,7 +742,10 @@ const HomePage = ({ navigate }) => {
                 </div>
 
                 {/* Book Now Button */}
-                <button className="w-full py-3.5 rounded-xl font-bold text-white shadow-sm" style={{ background: "#F3A218" }}>
+                <button
+                  className="w-full py-3.5 rounded-xl font-bold text-white shadow-sm"
+                  style={{ background: "#F3A218" }}
+                >
                   Book Now
                 </button>
               </div>
@@ -613,18 +763,44 @@ const HomePage = ({ navigate }) => {
                   </button>
                 </div>
 
-                <h3 className="px-5 text-lg font-bold mb-4" style={{ color: "#111827" }}>About Event</h3>
+                <h3
+                  className="px-5 text-lg font-bold mb-4"
+                  style={{ color: "#111827" }}
+                >
+                  About Event
+                </h3>
 
                 <div className="px-5 pb-8 overflow-y-auto">
-                  <p className="text-[13px] leading-relaxed mb-6" style={{ color: "#374151" }}>
+                  <p
+                    className="text-[13px] leading-relaxed mb-6"
+                    style={{ color: "#374151" }}
+                  >
                     {selectedEvent.about}
-                    <br /><br />
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                    <br />
+                    <br />
+                    There are many variations of passages of Lorem Ipsum
+                    available, but the majority have suffered alteration in some
+                    form, by injected humour, or randomised words which don't
+                    look even slightly believable. If you are going to use a
+                    passage of Lorem Ipsum, you need to be sure there isn't
+                    anything embarrassing hidden in the middle of text. All the
+                    Lorem Ipsum generators on the Internet tend to repeat
+                    predefined chunks as necessary, making this the first true
+                    generator on the Internet. It uses a dictionary of over 200
+                    Latin words, combined with a handful of model sentence
+                    structures, to generate Lorem Ipsum which looks reasonable.
+                    The generated Lorem Ipsum is therefore always free from
+                    repetition, injected humour, or non-characteristic words
+                    etc.
                   </p>
 
                   <div className="text-[14px]">
                     <span style={{ color: "#374151" }}>Book here: </span>
-                    <a href="https://www.ebocab.com/" className="underline font-medium" style={{ color: "#374151" }}>
+                    <a
+                      href="https://www.ebocab.com/"
+                      className="underline font-medium"
+                      style={{ color: "#374151" }}
+                    >
                       https://www.ebocab.com/
                     </a>
                   </div>
@@ -642,17 +818,28 @@ const HomePage = ({ navigate }) => {
                   >
                     <FiArrowLeft size={18} />
                   </button>
-                  <h3 className="text-lg font-bold" style={{ color: "#111827" }}>Map</h3>
+                  <h3
+                    className="text-lg font-bold"
+                    style={{ color: "#111827" }}
+                  >
+                    Map
+                  </h3>
                 </div>
 
                 <div className="px-5 pb-6 flex-1 flex flex-col items-center justify-center">
-                  <div className="w-full max-w-[342px] h-[341px] rounded-2xl overflow-hidden bg-gray-200 relative" style={{ border: "1px dashed #3B82F6" }}>
-                    <img src="https://i.stack.imgur.com/HILmr.png" alt="Map view" className="w-full h-full object-cover" />
+                  <div
+                    className="w-full max-w-[342px] h-[341px] rounded-2xl overflow-hidden bg-gray-200 relative"
+                    style={{ border: "1px dashed #3B82F6" }}
+                  >
+                    <img
+                      src="https://i.stack.imgur.com/HILmr.png"
+                      alt="Map view"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
               </div>
             )}
-
           </div>
         </div>
       )}
