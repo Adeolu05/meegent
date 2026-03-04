@@ -55,18 +55,6 @@ const FavoritePage = () => {
             <Link to="/wallet">
               <img src={wa2} alt="Wallet" className="w-5 h-5 object-contain" />
             </Link>
-            <div className="flex items-center justify-center">
-              <svg
-                width="20"
-                height="20"
-                fill="#F3A218"
-                stroke="#F3A218"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
             <Link to="/notifications">
               <img src={lo2} alt="Notifications" className="w-5 h-5 object-contain" />
             </Link>
