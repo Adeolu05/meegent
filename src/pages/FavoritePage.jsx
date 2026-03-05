@@ -10,10 +10,43 @@ import memoji2 from "../assets/event-modal/avatar/Memoji-2.png";
 import memoji3 from "../assets/event-modal/avatar/Memoji-3.png";
 import memoji4 from "../assets/event-modal/avatar/Memoji-4.png";
 import memoji5 from "../assets/event-modal/avatar/Memoji.png";
+import im from "../assets/image (8).png";
+import { FiLink, FiPhone, FiMessageSquare, FiArrowLeft } from "react-icons/fi";
 
-const FavoritePage = () => {
+const FavoritePage = ({ navigate }) => {
   const [fadeIn, setFadeIn] = useState(false);
   const [favorites, setFavorites] = useState([]);
+
+  // Modal states
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [modalView, setModalView] = useState("main");
+  const [quantity, setQuantity] = useState(1);
+  const [dragY, setDragY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startY, setStartY] = useState(0);
+
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    setStartY(e.touches ? e.touches[0].clientY : e.clientY);
+  };
+
+  const handleDragMove = (e) => {
+    if (!isDragging) return;
+    const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+    const deltaY = currentY - startY;
+    if (deltaY > 0) {
+      setDragY(deltaY);
+    }
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    if (dragY > 100) {
+      setSelectedEvent(null);
+      setModalView("main");
+    }
+    setDragY(0);
+  };
 
   useEffect(() => {
     setTimeout(() => setFadeIn(true), 100);
@@ -65,11 +98,12 @@ const FavoritePage = () => {
               {favorites.map((event) => (
                 <div
                   key={event.id}
-                  className="rounded-2xl overflow-hidden"
+                  className="rounded-2xl overflow-hidden cursor-pointer"
                   style={{
                     background: "#FEF6E7",
                     boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
                   }}
+                  onClick={() => setSelectedEvent(event)}
                 >
                   {/* Event image */}
                   <div className="relative h-[160px] md:h-[200px]">
@@ -167,6 +201,238 @@ const FavoritePage = () => {
           </div>
         )}
       </div>
+
+      {/* Event Modal / Bottom Sheet */}
+      {selectedEvent && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center"
+          style={{
+            background: "rgba(0,0,0,0.6)",
+          }}
+          onClick={() => {
+            setSelectedEvent(null);
+            setModalView("main");
+          }}
+        >
+          <div
+            className="rounded-t-[32px] overflow-hidden w-full max-w-full relative flex flex-col transition-transform"
+            style={{
+              background: "#FFFBF4",
+              boxShadow: "0 -8px 40px rgba(0,0,0,0.15)",
+              maxHeight: "90vh",
+              transform: `translateY(${dragY}px)`,
+              transition: isDragging ? "none" : "transform 0.3s ease",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Minimal top border/handle piece */}
+            <div
+              className="flex justify-center pt-5 pb-3 cursor-grab active:cursor-grabbing w-full"
+              onTouchStart={handleDragStart}
+              onTouchMove={handleDragMove}
+              onTouchEnd={handleDragEnd}
+              onMouseDown={handleDragStart}
+              onMouseMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={handleDragEnd}
+            >
+              <div className="w-12 h-1.5 rounded-full" style={{ background: "#F5DEC0" }} />
+            </div>
+
+            {modalView === "main" && (
+              <div className="px-5 pb-6 overflow-y-auto">
+                {/* Header */}
+                <div className="flex justify-between items-start pt-2">
+                  <h3 className="text-xl font-bold leading-tight" style={{ color: "#111827", maxWidth: "80%" }}>
+                    {selectedEvent.title}
+                  </h3>
+                  <button className="text-[#F3A218] p-1">
+                    <FiLink size={20} />
+                  </button>
+                </div>
+
+                {/* Location & Date */}
+                <div className="flex items-center gap-4 mt-3 mb-4">
+                  <div className="flex items-center gap-1.5">
+                    <img src={lo} className="w-4 h-4" alt="" />
+                    <span className="text-xs font-medium" style={{ color: "#4B5563" }}>
+                      {selectedEvent.location}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <img src={lo2} className="w-4 h-4" alt="" />
+                    <span className="text-xs font-medium" style={{ color: "#4B5563" }}>
+                      {selectedEvent.date}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Attendees */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="flex -space-x-[10px]">
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[1]"><img src={memoji1} className="w-full h-full object-cover" /></div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[2]"><img src={memoji2} className="w-full h-full object-cover" /></div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[3]"><img src={memoji3} className="w-full h-full object-cover" /></div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[4]"><img src={memoji4} className="w-full h-full object-cover" /></div>
+                    <div className="w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-[#FFFBF4] bg-[#FDE4B4] shadow-sm relative z-[5]"><img src={memoji5} className="w-full h-full object-cover" /></div>
+                    <div
+                      className="w-[32px] h-[32px] rounded-full border-[2px] border-[#FFFBF4] shadow-sm relative z-[6] flex items-center justify-center -ml-2"
+                      style={{ background: "#F3A218" }}
+                    >
+                      <span className="text-[11px] font-bold text-white">+34</span>
+                    </div>
+                  </div>
+                  <div className="text-xs font-semibold">
+                    {selectedEvent.attendees || 100}+ <span style={{ color: "#F3A218", fontWeight: "normal" }}>/Invites</span>
+                  </div>
+                </div>
+
+                {/* About Event */}
+                <div className="mb-5">
+                  <h4 className="text-sm font-bold mb-2" style={{ color: "#111827" }}>About Event</h4>
+                  <p className="text-[13px] leading-relaxed" style={{ color: "#374151" }}>
+                    {selectedEvent.desc?.substring(0, 180) || "No description provided."}...{" "}
+                    <button onClick={() => setModalView("readMore")} style={{ color: "#F3A218" }}>Read more</button>
+                  </p>
+                </div>
+
+                {/* Organizer */}
+                <div className="mb-5">
+                  <h4 className="text-sm font-bold mb-3" style={{ color: "#111827" }}>Organizer</h4>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-900 border border-gray-100">
+                        {/* Mock organizer image */}
+                        <img src={im} alt="Organizer" className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold" style={{ color: "#111827" }}>{selectedEvent.organizer?.name || "Arkiv"}</p>
+                        <p className="text-[11px]" style={{ color: "#6B7280" }}>{selectedEvent.organizer?.role || "Host"}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "#FFF0D6", color: "#F3A218" }}>
+                        <FiPhone size={16} />
+                      </button>
+                      <button className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "#FFF0D6", color: "#F3A218" }}>
+                        <FiMessageSquare size={16} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Address block */}
+                <div className="mb-6 flex items-end justify-between">
+                  <div>
+                    <h4 className="text-sm font-bold mb-1" style={{ color: "#111827" }}>Address</h4>
+                    <p className="text-[13px]" style={{ color: "#6B7280" }}>
+                      {selectedEvent.isVirtual ? selectedEvent.virtualLink : "Saint Ives, New York, USA"}
+                    </p>
+                  </div>
+                  <button onClick={() => setModalView("map")} className="text-sm font-bold mb-0.5" style={{ color: "#F3A218" }}>
+                    View map
+                  </button>
+                </div>
+
+                {/* Footer price / counter */}
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <p className="text-xs mb-1" style={{ color: "#6B7280" }}>Total Price</p>
+                    <p className="font-bold text-sm" style={{ color: "#F3A218" }}>
+                      {selectedEvent.price || "Free"} <span className="text-[10px] font-normal text-gray-400">{selectedEvent.perPerson ? "/Person" : ""}</span>
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600"
+                      style={{ background: "#F5E6D3" }}
+                    >
+                      -
+                    </button>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-medium" style={{ background: "#F3A218" }}>
+                      {quantity}
+                    </div>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600"
+                      style={{ background: "#F5E6D3" }}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                {/* Book Now Button */}
+                <button
+                  className="w-full py-3.5 rounded-xl font-bold text-white shadow-sm"
+                  style={{ background: "#F3A218" }}
+                  onClick={() => {
+                    navigate("eventbooked");
+                    setSelectedEvent(null);
+                    setModalView("main");
+                  }}
+                >
+                  Book Now
+                </button>
+              </div>
+            )}
+
+            {/* Read More View */}
+            {modalView === "readMore" && (
+              <div className="flex flex-col h-full bg-[#FFFBF4]">
+                <div className="flex items-center gap-3 px-5 pt-2 pb-4">
+                  <button
+                    onClick={() => setModalView("main")}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-[#F3A218] bg-[#FFF0D6]"
+                  >
+                    <FiArrowLeft size={18} />
+                  </button>
+                </div>
+
+                <h3 className="px-5 text-lg font-bold mb-4" style={{ color: "#111827" }}>About Event</h3>
+
+                <div className="px-5 pb-8 overflow-y-auto">
+                  <p className="text-[13px] leading-relaxed mb-6" style={{ color: "#374151" }}>
+                    {selectedEvent.desc || selectedEvent.about}
+                    <br /><br />
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                  </p>
+
+                  <div className="text-[14px]">
+                    <span style={{ color: "#374151" }}>Book here: </span>
+                    <a href="https://www.ebocab.com/" className="underline font-medium" style={{ color: "#374151" }}>
+                      https://www.ebocab.com/
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Map View */}
+            {modalView === "map" && (
+              <div className="flex flex-col h-full bg-[#FFFBF4]">
+                <div className="flex flex-col px-5 pt-2 pb-4">
+                  <button
+                    onClick={() => setModalView("main")}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-[#F3A218] bg-[#FFF0D6] mb-4"
+                  >
+                    <FiArrowLeft size={18} />
+                  </button>
+                  <h3 className="text-lg font-bold" style={{ color: "#111827" }}>Map</h3>
+                </div>
+
+                <div className="px-5 pb-6 flex-1 flex flex-col items-center justify-center">
+                  <div className="w-full max-w-[342px] h-[341px] rounded-2xl overflow-hidden bg-gray-200 relative" style={{ border: "1px dashed #3B82F6" }}>
+                    <img src="https://i.stack.imgur.com/HILmr.png" alt="Map view" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
