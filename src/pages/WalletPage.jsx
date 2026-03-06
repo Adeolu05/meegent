@@ -222,11 +222,11 @@ const WalletPage = () => {
               <p className="text-[15px] font-medium mb-1" style={{ color: "#1A1A1A" }}>
                 Available balance
               </p>
-              <h2 className="flex items-baseline font-black leading-none m-0 p-0 shadow-none">
-                <span className="text-4xl" style={{ color: "#1A1A1A", letterSpacing: "-0.04em" }}>
+              <h2 className="flex items-baseline font-black leading-none m-0 p-0 shadow-none whitespace-nowrap overflow-hidden">
+                <span className="text-3xl sm:text-4xl" style={{ color: "#1A1A1A", letterSpacing: "-0.04em" }}>
                   $GLM {balanceWhole}
                 </span>
-                <span className="text-4xl font-black" style={{ color: "#74726B", letterSpacing: "-0.04em" }}>
+                <span className="text-2xl sm:text-3xl font-black ml-0.5" style={{ color: "#74726B", letterSpacing: "-0.04em" }}>
                   {balanceDecimal}
                 </span>
               </h2>

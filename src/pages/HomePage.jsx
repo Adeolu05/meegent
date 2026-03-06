@@ -218,33 +218,38 @@ const HomePage = ({ navigate }) => {
                 className="w-11 h-11 md:w-13 md:h-13 rounded-full flex-shrink-0 cursor-pointer"
               />
             </Link>
-            <button className="flex items-center gap-2" onClick={handleCopy}>
-              <span
-                className="text-sm px-3 py-1 rounded-full"
-                style={{ background: "#F0EBE3", color: "#8B8068" }}
-              >
-                0x87... 6569hb
-              </span>
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="#8B8068"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <rect x="9" y="9" width="13" height="13" rx="2" />
-                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-              </svg>
-              {copied && (
+            <div className="flex flex-col min-w-0">
+              <h2 className="text-xl font-bold leading-tight" style={{ color: "#1A1A1A" }}>
+                Hey, Rebecca
+              </h2>
+              <button className="flex items-center gap-1.5 mt-0.5" onClick={handleCopy}>
                 <span
-                  className="text-xs font-medium animate-pulse"
-                  style={{ color: "#E8960C" }}
+                  className="text-xs md:text-sm font-medium"
+                  style={{ color: "#8B8068" }}
                 >
-                  Copied!
+                  0x87... 6569hb
                 </span>
-              )}
-            </button>
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  stroke="#8B8068"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                </svg>
+                {copied && (
+                  <span
+                    className="text-[10px] font-medium animate-pulse ml-1"
+                    style={{ color: "#E8960C" }}
+                  >
+                    Copied!
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
           <div className="flex gap-2">
             {/* ADD BUTTON - navigates to Create Event */}
